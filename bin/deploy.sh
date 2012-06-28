@@ -7,4 +7,5 @@ fi
 
 echo "Copying config..."
 cp -f ./src/NebulaFlow/config/routing.yml ./app/config/
+cp -f ./src/NebulaFlow/config/routing_dev.yml ./app/config/
 echo "NebulaFlow successfully updated it's config"
