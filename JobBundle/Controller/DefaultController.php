@@ -10,11 +10,11 @@ use Symfony\Component\HttpFoundation\Response;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/")
+     * @Route("/", name="job_home")
      * @Template()
      */
     public function indexAction()
     {
-        return new Response('NebulaFlow Lives!!');
+        return array();
     }
 }

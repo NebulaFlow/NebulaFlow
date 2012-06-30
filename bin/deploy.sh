@@ -6,6 +6,7 @@ if [ ! -f ./src/NebulaFlow/bin/deploy.sh ]; then
 fi
 
 echo "Copying config..."
+cp -f ./src/NebulaFlow/config/AppKernel.php ./app/
 cp -f ./src/NebulaFlow/config/routing.yml ./app/config/
 cp -f ./src/NebulaFlow/config/routing_dev.yml ./app/config/
 cp -f ./src/NebulaFlow/config/base.html.twig ./app/Resources/views/

@@ -1,13 +1,71 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <meta charset="UTF-8" />
+        {% block stylesheets %}
+		<link rel="stylesheet" href="http://yui.yahooapis.com/combo?3.5.1/build/cssreset/reset-min.css&amp;3.5.1/build/cssfonts/fonts-min.css&amp;3.5.1/build/cssgrids/grids-min.css&amp;3.5.1/build/cssbase/base-min.css">
+		<style type="text/css">
+header {
+	background-color: #bbbbff;
+	text-align: center;
+}
+header h1 {
+	margin: 0px;
+	padding: 2px;
+}
+nav {
+	background-color: #bbffbb;
+}
+nav ul {
+	margin: 0px;
+	padding: 2px;
+}
+section {
+	background-color: #ffffff;
+}
+section h2 {
+	margin: 0px;
+}
+footer {
+	background-color: #ffbbbb;
+	text-align: center;
+}
+footer p {
+	margin: 0px;
+	padding: 2px;
+}
+		</style>
+		{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
-    <body>
-        {% block body %}{% endblock %}
+    <body id="doc">
+        {% block body %}
+			{% block header %}
+		<header id="hd"><h1>Nebula Flow</h1></header>
+			{% endblock %}
+		<div class="yui3-g">
+			<div class="yui3-u-1-5">
+			{% block nav %}
+				<nav>
+					<ul>
+						<li><a href="{{ path('job_home') }}" title="Jobs">Jobs</a></li>
+					</ul>
+				</nav>
+			{% endblock %}
+			</div>
+			<div class="yui3-u-4-5">
+			{% block content %}
+				<section>
+					<article>[Content]<article>
+				</section>
+			{% endblock %}
+			</div>
+		</div>
+			{% block footer %}
+		<footer id="ft"><p>Nebula Flow</p></footer>
+			{% endblock %}
+		{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
 </html>
