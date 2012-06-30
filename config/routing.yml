@@ -1,7 +1,12 @@
+NebulaFlowStaticBundle:
+    resource: "@NebulaFlowStaticBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 NebulaFlowJobBundle:
     resource: "@NebulaFlowJobBundle/Controller/"
     type:     annotation
-    prefix:   /
+    prefix:   /job
 
 # Internal routing configuration to handle ESI
 #_internal:

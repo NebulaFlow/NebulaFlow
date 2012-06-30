@@ -1,6 +1,6 @@
 <?php
 
-namespace NebulaFlow\JobBundle\Controller;
+namespace NebulaFlow\StaticBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -9,7 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/", name="job_home")
+     * @Route("/", name="static_home")
      * @Template()
      */
     public function indexAction()
