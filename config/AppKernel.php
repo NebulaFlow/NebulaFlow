@@ -21,6 +21,7 @@ class AppKernel extends Kernel
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new NebulaFlow\JobBundle\NebulaFlowJobBundle(),
             new NebulaFlow\StaticBundle\NebulaFlowStaticBundle(),
+            new NebulaFlow\MainBundle\NebulaFlowMainBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

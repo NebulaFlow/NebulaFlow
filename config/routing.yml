@@ -1,7 +1,12 @@
+NebulaFlowMainBundle:
+    resource: "@NebulaFlowMainBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 NebulaFlowStaticBundle:
     resource: "@NebulaFlowStaticBundle/Controller/"
     type:     annotation
-    prefix:   /
+    prefix:   /static
 
 NebulaFlowJobBundle:
     resource: "@NebulaFlowJobBundle/Controller/"
