@@ -2,6 +2,27 @@
 {% block title %}NebulaFlow - Jobs{% endblock %}
 {% block content %}
 		<section>
-			<article><h2>NebulaFlow - Jobs</h2><article>
+			<article>
+				<h2>Jobs</h2>
+	{% for job in jobs %}
+				<p>
+					ID: {{ job.id }}<br />
+					Type: {{ job.type }}<br />
+					Status: {{ job.status }}<br />
+					Subject: {{ job.subject }}<br />
+					Raised On: {{ job.raisedOn|date("d/m/Y \\a\\t H:i:s") }}<br />
+					Raised By: {{ job.raisedBy }}<br />
+				</p>
+	{% else %}
+				<p>You have no jobs.</p>
+	{% endfor %}
+			</article>
+			<article>
+				<h2>Add a job</h2>
+				<form action="{{ path('job_new') }}" method="post" {{ form_enctype(form) }}>
+				{{ form_widget(form) }}
+				<input type="submit" />
+				</form>
+			</article>
 		</section>
 {% endblock %}

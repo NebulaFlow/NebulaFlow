@@ -1,0 +1,1 @@
+{% extends "::base.html.twig" %}{% block title %}NebulaFlow - Jobs{% endblock %}{% block content %}		<section>			<article>				<h2>Add a job</h2>				<form action="{{ path('job_new') }}" method="post" {{ form_enctype(form) }}>				{{ form_widget(form) }}				<input type="submit" />				</form>			</article>		</section>{% endblock %}
