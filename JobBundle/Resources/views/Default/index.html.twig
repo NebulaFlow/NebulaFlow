@@ -7,7 +7,7 @@
 	{% for job in jobs %}
 				<p>
 					ID: {{ job.id }}<br />
-					Type: {{ job.type }}<br />
+					Type: {{ job.type.name }}<br />
 					Status: {{ job.status }}<br />
 					Subject: {{ job.subject }}<br />
 					Raised On: {{ job.raisedOn|date("d/m/Y \\a\\t H:i:s") }}<br />

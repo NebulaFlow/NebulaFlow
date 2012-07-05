@@ -26,8 +26,9 @@ class Job
 	 *
 	 * The type of job being raised.
      *
-     * @ORM\Column(name="type", type="integer")
-	 * @Assert\NotBlank
+	 * @ORM\ManyToOne(targetEntity="JobType", inversedBy="id")
+	 * @ORM\JoinColumn(name="type", referencedColumnName="id")
+	 * @Assert\Type(type="NebulaFlow\JobBundle\Entity\JobType")
      */
     private $type;
 
@@ -84,7 +85,7 @@ class Job
      * @param integer $type
      * @return Job
      */
-    public function setType($type)
+    public function setType(JobType $type = null)
     {
         $this->type = $type;
         return $this;
@@ -93,11 +94,12 @@ class Job
     /**
      * Get type
      *
-     * @return integer 
+     * @return integer
+	 * @todo this bombs out if the join can't be performed with a \Doctrine\ORM\EntityNotFoundException
      */
     public function getType()
     {
-        return $this->type;
+		return $this->type;
     }
 
     /**

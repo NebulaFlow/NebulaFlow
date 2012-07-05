@@ -22,12 +22,8 @@ class DefaultController extends Controller
         $jobs = $query->getResult();
 		// Form to add a new job
 		$newJob = new \NebulaFlow\JobBundle\Entity\Job();
-		$newJob->setType(1);
 		$newJob->setSubject('ForeignObject:12345');
-		$form = $this->createFormBuilder($newJob)
-			->add('type')
-			->add('subject')
-			->getForm();
+		$form = $this->createForm(new \NebulaFlow\JobBundle\Form\Type\JobType(), $newJob);
         return array(
 			'jobs'	=> $jobs,
 			'form'	=> $form->createView()
@@ -40,10 +36,7 @@ class DefaultController extends Controller
     public function newJobAction(Request $request)
     {
 		$newJob = new \NebulaFlow\JobBundle\Entity\Job();
-		$form = $this->createFormBuilder($newJob)
-			->add('type', null, array('label'=>'Type of Job'))
-			->add('subject', null, array('label'=>'Subject to act on'))
-			->getForm();
+		$form = $this->createForm(new \NebulaFlow\JobBundle\Form\Type\JobType(), $newJob);
 		$newJob->setStatus('NEW');
 		$newJob->setRaisedOn(new \Datetime('now'));
 		$newJob->setRaisedBy('NebulaFlow:TestForm');
