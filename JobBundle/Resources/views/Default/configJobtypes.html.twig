@@ -1,0 +1,23 @@
+{% extends "::base.html.twig" %}
+{% block title %}NebulaFlow - Configuration{% endblock %}
+{% block content %}
+		<section>
+			<article>
+				<h2>Job Types</h2>
+				<ul>
+	{% for jobtype in jobtypes %}
+					<li>{{ jobtype.name }} ({{ jobtype.id }})</li>
+	{% else %}
+					<li>Please create some job types.</li>
+	{% endfor %}
+					<li>
+						<form action="{{ path('job_config_jobtypes') }}" method="post" {{ form_enctype(form) }}>
+						{{ form_widget(form) }}
+						<input type="submit" value="Add" />
+						</form>
+					</li>
+				</ul>
+				<p>{{ message }}</p>
+			</article>
+		</section>
+{% endblock %}

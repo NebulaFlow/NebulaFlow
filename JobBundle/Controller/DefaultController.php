@@ -59,11 +59,53 @@ class DefaultController extends Controller
 		}
 	}
     /**
-     * @Route("/", name="job_new_success")
+     * @Route("/new_success", name="job_new_success")
      * @Template()
      */
     public function newJobSuccessAction()
     {
 		return array();
+	}
+    /**
+     * @Route("/config/jobtypes", name="job_config_jobtypes")
+     * @Template()
+     */
+    public function configJobtypesAction(Request $request)
+    {
+		// JobTypes for the list
+		$em = $this->getDoctrine()->getEntityManager();
+		$query = $em->createQuery('SELECT jt FROM NebulaFlowJobBundle:JobType jt ORDER BY jt.name')
+			;
+        $jobtypes = $query->getResult();
+		// Form to add a new job
+		$newJobType = new \NebulaFlow\JobBundle\Entity\JobType();
+		$form = $this->createForm(new \NebulaFlow\JobBundle\Form\Type\JobTypeType(), $newJobType);
+		// Process form
+		if ($request->getMethod() == 'POST') {
+			$form->bindRequest($request);
+			if ($form->isValid()) {
+				$em = $this->getDoctrine()->getEntityManager();
+				$em->persist($newJobType);
+				$em->flush();
+				return $this->redirect($this->generateUrl('job_config_jobtypes'));
+			}else{
+				return array(
+					'jobtypes'	=> $jobtypes,
+					'form'		=> $form->createView(),
+					'message'	=> ''
+				);
+			}
+		}else{
+			return array(
+				'jobtypes'	=> $jobtypes,
+				'form'		=> $form->createView(),
+				'message'	=> ''
+			);
+		}
+        return array(
+			'jobtypes'	=> $jobtypes,
+			'form'		=> $form->createView(),
+			'message'	=> ''
+		);
 	}
 }

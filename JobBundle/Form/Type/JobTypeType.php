@@ -6,7 +6,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 class JobTypeType extends AbstractType
 {
 	public function buildForm(FormBuilderInterface $builder, array $options) {
-		$builder->add('name', null, array('label'=>'Job Type Name'));
+		$builder->add('name', null, array('label'=>' '));
 	}
 	public function getName(){
 		return 'jobType';
